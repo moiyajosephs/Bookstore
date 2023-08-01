@@ -5,63 +5,133 @@ import com.company.bookstore.repository.BookRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@WebMvcTest(BookController.class)
 class BookControllerTest {
 
+    private ObjectMapper mapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
-    private ObjectMapper mapper =  new ObjectMapper();
     private List<Book> bookList;
 
     @MockBean
     private BookRepository bookRepository;
 
+    private Date date;
+
     // Testing POST /books/
     @Test
-    public void shouldReturnBookonPostRequest() {
+    public void shouldReturnBookonPostRequest() throws Exception {
 
+        date = new Date();
         Book book = new Book();
         book.setIsbn("1235");
-        book.setTitle();
-        book.setPublish_date();
-        book.setAuthor_id();
-        book.setPrice();
+        book.setTitle("Green");
+        book.setPublish_date(date);
+        book.setAuthor_id(2);
+        book.setPrice(12.99);
 
         String inputJson = mapper.writeValueAsString(book);
 
+        Book book2 = new Book();
+        book2.setIsbn("1235");
+        book2.setTitle("Green");
+        book2.setPublish_date(date);
+        book2.setAuthor_id(2);
+        book2.setPrice(12.99);
+        book2.setId(1);
 
+        String outputJson = mapper.writeValueAsString(book2);
 
+        mockMvc.perform(post("/books")
+                        .content(inputJson).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isCreated());
     }
 
     // Testing GET /books/{id}
     @Test
-    public void shouldReturnBookbyIdonGetRequest() {
+    public void shouldReturnBookbyIdonGetRequest() throws Exception {
+        date = new Date();
+        Book book = new Book();
+        book.setIsbn("1235");
+        book.setTitle("Green");
+        book.setPublish_date(date);
+        book.setAuthor_id(2);
+        book.setPrice(12.99);
+        book.setId(1);
+
+        mockMvc.perform(get("/books/1"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     // Testing GET /books/
     @Test
-    public void shouldReturnAllBooksonGetRequest() {
+    public void shouldReturnAllBooksonGetRequest() throws Exception {
+
+        mockMvc.perform(get("/books")).andDo(print()).andExpect(status().isOk());
+
     }
 
     // Testing PUT /books
     @Test
-    public void shouldUpdateBookonPostRequest() {
+    public void shouldUpdateBookonPostRequest() throws Exception {
+        date = new Date();
+        Book book = new Book();
+        book.setIsbn("1235");
+        book.setTitle("Green");
+        book.setPublish_date(date);
+        book.setAuthor_id(2);
+        book.setPrice(12.99);
+        book.setId(1);
+
+        String inputJson = mapper.writeValueAsString(book);
+
+        mockMvc.perform(
+                        put("/books")
+                                .content(inputJson)
+                                .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(print())
+                .andExpect(status().isNoContent());
+
     }
 
     // Testing DELETE /books/{id}
     @Test
-    public void shouldDeleteBookByIdonDeletePostRequest() {
+    public void shouldDeleteBookByIdonDeletePostRequest() throws Exception {
+        mockMvc.perform(delete("/books/1")).andDo(print()).andExpect(status().isNoContent());
+
     }
 
     // Testing GET /books/author/{id}
     @Test
-    public void getBookByAuthorIdonGetRequest() {
+    public void getReturnBookByAuthorIdonGetRequest() throws Exception {
+        date = new Date();
+        Book book = new Book();
+        book.setIsbn("1235");
+        book.setTitle("Green");
+        book.setPublish_date(date);
+        book.setAuthor_id(2);
+        book.setPrice(12.99);
+        book.setId(1);
 
+        mockMvc.perform(get("/books/author/2"))
+                .andDo(print())
+                .andExpect(status().isOk());
     }
+
+
 }
