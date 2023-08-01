@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-//public class PublisherController {
-//}
+
 
 @RestController
 public class PublisherController {
@@ -34,7 +33,6 @@ public class PublisherController {
         }
     }
 
-
     @RequestMapping(value = "/publishers", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public Publisher addPublisher(@RequestBody Publisher publisher) {
@@ -43,13 +41,13 @@ public class PublisherController {
 
     @RequestMapping(value = "/publishers/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCustomer(@RequestBody Publisher publisher) {
+    public void updatePublisher(@RequestBody Publisher publisher) {
         repo.save(publisher);
     }
 
     @DeleteMapping("/publishers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCustomer(@PathVariable int id) {
+    public void deletePublisher(@PathVariable int id) {
         repo.deleteById(id);
     }
 }
