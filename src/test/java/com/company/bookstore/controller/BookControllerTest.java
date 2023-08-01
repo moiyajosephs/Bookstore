@@ -32,7 +32,7 @@ class BookControllerTest {
 
     // Testing POST /books/
     @Test
-    public void shouldReturnBookonPostRequest() throws Exception {
+    public void shouldReturnBook() throws Exception {
 
         date = new Date();
         Book book = new Book();
@@ -61,7 +61,7 @@ class BookControllerTest {
 
     // Testing GET /books/{id}
     @Test
-    public void shouldReturnBookbyIdonGetRequest() throws Exception {
+    public void shouldReturnBookbyId() throws Exception {
         date = new Date();
         Book book = new Book();
         book.setIsbn("1235");
@@ -79,7 +79,7 @@ class BookControllerTest {
 
     // Testing GET /books/
     @Test
-    public void shouldReturnAllBooksonGetRequest() throws Exception {
+    public void shouldReturnAllBooks() throws Exception {
 
         mockMvc.perform(get("/books")).andDo(print()).andExpect(status().isOk());
 
@@ -87,7 +87,7 @@ class BookControllerTest {
 
     // Testing PUT /books
     @Test
-    public void shouldUpdateBookonPostRequest() throws Exception {
+    public void shouldUpdateBook() throws Exception {
         date = new Date();
         Book book = new Book();
         book.setIsbn("1235");
@@ -111,14 +111,14 @@ class BookControllerTest {
 
     // Testing DELETE /books/{id}
     @Test
-    public void shouldDeleteBookByIdonDeletePostRequest() throws Exception {
+    public void shouldDeleteBookById() throws Exception {
         mockMvc.perform(delete("/books/1")).andDo(print()).andExpect(status().isNoContent());
 
     }
 
     // Testing GET /books/author/{id}
     @Test
-    public void getReturnBookByAuthorIdonGetRequest() throws Exception {
+    public void getReturnBookByAuthorId() throws Exception {
         date = new Date();
         Book book = new Book();
         book.setIsbn("1235");
