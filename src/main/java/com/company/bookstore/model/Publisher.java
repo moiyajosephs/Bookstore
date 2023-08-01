@@ -21,7 +21,7 @@ public class Publisher implements Serializable {
     private String street;
     private String city;
     private String state;
-    private String postal_code;
+    private String postalCode;
     private String phone;
     private String email;
 
@@ -65,12 +65,12 @@ public class Publisher implements Serializable {
         this.state = state;
     }
 
-    public String getPostal_code() {
-        return postal_code;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getPhone() {
@@ -94,12 +94,12 @@ public class Publisher implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Publisher publisher = (Publisher) o;
-        return getId() == publisher.getId() && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostal_code(), publisher.getPostal_code()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
+        return getId() == publisher.getId() && Objects.equals(getName(), publisher.getName()) && Objects.equals(getStreet(), publisher.getStreet()) && Objects.equals(getCity(), publisher.getCity()) && Objects.equals(getState(), publisher.getState()) && Objects.equals(getPostalCode(), publisher.getPostalCode()) && Objects.equals(getPhone(), publisher.getPhone()) && Objects.equals(getEmail(), publisher.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostal_code(), getPhone(), getEmail());
+        return Objects.hash(getId(), getName(), getStreet(), getCity(), getState(), getPostalCode(), getPhone(), getEmail());
     }
 
     @Override
@@ -110,7 +110,7 @@ public class Publisher implements Serializable {
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", postal_code='" + postal_code + '\'' +
+                ", postalCode='" + postalCode + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 '}';

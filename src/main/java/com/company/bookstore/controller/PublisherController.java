@@ -33,13 +33,13 @@ public class PublisherController {
         }
     }
 
-    @RequestMapping(value = "/publishers", method = RequestMethod.POST)
+    @PostMapping(value = "/publishers")
     @ResponseStatus(value = HttpStatus.CREATED)
     public Publisher addPublisher(@RequestBody Publisher publisher) {
         return repo.save(publisher);
     }
 
-    @RequestMapping(value = "/publishers/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/publishers/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePublisher(@RequestBody Publisher publisher) {
         repo.save(publisher);

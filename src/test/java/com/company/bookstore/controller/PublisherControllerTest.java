@@ -40,7 +40,7 @@ public class PublisherControllerTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostal_code("99999");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
 
 
@@ -53,7 +53,7 @@ public class PublisherControllerTest {
         pub_o.setStreet("123 Ill Way");
         pub_o.setCity("Atlanta");
         pub_o.setState("GA");
-        pub_o.setPostal_code("99999");pub.setEmail("lza@gmail.com");
+        pub_o.setPostalCode("99999");pub.setEmail("lza@gmail.com");
         pub_o.setPhone("404-424-4444");
 
 
@@ -90,7 +90,7 @@ public class PublisherControllerTest {
         pub.setStreet("123 Jill Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostal_code("99999");
+        pub.setPostalCode("99999");
         pub.setEmail("jim@gmail.com");
         pub.setPhone("404-414-4444");
 
@@ -102,7 +102,7 @@ public class PublisherControllerTest {
         pub.setStreet("123 Jill Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostal_code("99999");pub.setEmail("jil@gmail.com");
+        pub.setPostalCode("99999");pub.setEmail("jil@gmail.com");
         pub.setPhone("404-434-4444");
 
         String outputJson = mapper.writeValueAsString(pub_o);
@@ -122,7 +122,7 @@ public class PublisherControllerTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostal_code("99899");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99899");pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
 
 
@@ -135,7 +135,7 @@ public class PublisherControllerTest {
         pub_o.setStreet("123 Ill Way");
         pub_o.setCity("Atlanta");
         pub_o.setState("GA");
-        pub_o.setPostal_code("99999");pub.setEmail("lza@gmail.com");
+        pub_o.setPostalCode("99999");pub.setEmail("lza@gmail.com");
         pub_o.setPhone("404-424-4444");
 
 
