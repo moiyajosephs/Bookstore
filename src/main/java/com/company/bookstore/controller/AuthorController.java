@@ -14,7 +14,7 @@ public class AuthorController {
     @Autowired
     AuthorRepository repo;
 
-    @GetMapping("/Authors")
+    @GetMapping("/authors")
     public List<Author> getAuthors() {
         return repo.findAll();
     }

@@ -10,7 +10,6 @@ import java.util.Set;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "publisher")
-
 public class Publisher implements Serializable {
     @Id
     @Column(name = "publisher_id")

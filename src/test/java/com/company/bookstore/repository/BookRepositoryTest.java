@@ -22,7 +22,7 @@ public class BookRepositoryTest {
     
     @Autowired
     AuthorRepository authorRepository;
-    
+
     @Autowired
     PublisherRepository publisherRepository;
     
@@ -31,6 +31,8 @@ public class BookRepositoryTest {
     @BeforeEach
     public void setUp() throws Exception {
         bookRepository.deleteAll();
+        authorRepository.deleteAll();
+        publisherRepository.deleteAll();
     }
 
     //Test Create
@@ -44,6 +46,7 @@ public class BookRepositoryTest {
         book.setAuthor_id(2);
         book.setPrice(12.99);
         book.setId(1);
+
 
         book = bookRepository.save(book);
 

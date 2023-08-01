@@ -1,7 +1,10 @@
 package com.company.bookstore.controller;
 
 import com.company.bookstore.model.Book;
+import com.company.bookstore.model.Publisher;
+import com.company.bookstore.repository.AuthorRepository;
 import com.company.bookstore.repository.BookRepository;
+import com.company.bookstore.repository.PublisherRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,12 @@ class BookControllerTest {
 
     @MockBean
     private BookRepository bookRepository;
+
+    @MockBean
+    private AuthorRepository authorRepository;
+
+    @MockBean
+    private PublisherRepository publisherRepository;
 
     private Date date;
 
