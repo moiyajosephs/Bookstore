@@ -1,4 +1,13 @@
 package com.company.bookstore.repository;
 
-public interface BookRepository {
+import com.company.bookstore.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface BookRepository extends JpaRepository<Book, Integer> {
+
+
+    //Search Book by Author Id
+    List<Book> findBookByAuthorId(int authorId);
 }
