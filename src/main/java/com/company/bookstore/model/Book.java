@@ -16,7 +16,7 @@ public class Book {
     @Column(name = "book_id")
     private int id;
 
-    private int isbn;
+    private String isbn;
 
     private Date publish_date;
 
@@ -39,11 +39,11 @@ public class Book {
         this.id = id;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
