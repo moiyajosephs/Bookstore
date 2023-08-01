@@ -20,15 +20,12 @@ public class Book {
 
     private Date publish_date;
 
-    //One to Many , one author to many books?
     private int author_id;
 
     private String title;
 
-    //One to one (?)
     private int publisher_id;
 
-    // double or float?
     private double price;
 
     public int getId() {

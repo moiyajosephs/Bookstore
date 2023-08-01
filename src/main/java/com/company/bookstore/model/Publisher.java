@@ -25,6 +25,10 @@ public class Publisher implements Serializable {
     private String phone;
     private String email;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "publisherId")
+    private Set<Book> Books = new HashSet<>();
+
     public int getId() {
         return id;
     }
