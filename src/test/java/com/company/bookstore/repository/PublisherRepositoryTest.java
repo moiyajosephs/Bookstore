@@ -24,7 +24,115 @@ public class PublisherRepositoryTest {
     AuthorRepository authorRepository;
     @Autowired
     BookRepository bookRepository;
-//    @Autowired
-//    ArtistRepository artistRepository;
+
+    @Autowired
+    PublisherRepository publisherRepository;
+
+    @BeforeEach
+    public void setUp() throws Exception {
+
+        authorRepository.deleteAll();
+        bookRepository.deleteAll();
+        publisherRepository.deleteAll();
+    }
+
+    @Test
+    public void shouldAddPublisher() {
+        Publisher pub = new Publisher();
+        pub.setName("Elza iNC");
+        pub.setStreet("123 Will Way");
+        pub.setCity("Atlanta");
+        pub.setState("GA");
+        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPhone("404-444-4444");
+
+
+        //act
+        pub = publisherRepository.save(pub);
+        Optional<Publisher> pub1 = publisherRepository.findById(pub.getId());
+
+        //assert
+        assertEquals(pub1.get(), pub);
+    }
+
+    @Test
+    public void shouldUpdatePublisher() {
+        Publisher pub = new Publisher();
+        pub.setName("Elza iNC");
+        pub.setStreet("123 Will Way");
+        pub.setCity("Atlanta");
+        pub.setState("GA");
+        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPhone("404-444-4444");
+
+        pub = publisherRepository.save(pub);
+
+        pub.setName("Aye iNC");
+        pub.setStreet("123 Will Way");
+        pub.setCity("Atlanta");
+        pub.setState("GA");
+        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPhone("404-444-4444");
+
+        pub = publisherRepository.save(pub);
+        //act
+        Optional<Publisher> pub1 = publisherRepository.findById(pub.getId());
+
+        //assert
+        assertEquals(pub1.get(), pub);
+
+    }
+
+    @Test
+    public void shouldGetPublisherbyId() {
+        Publisher pub = new Publisher();
+        pub.setName("Elza iNC");
+        pub.setStreet("123 Will Way");
+        pub.setCity("Atlanta");
+        pub.setState("GA");
+        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPhone("404-444-4444");
+        pub = publisherRepository.save(pub);
+
+
+        Publisher pub2 = new Publisher();
+        pub2.setName("Laye iNC");
+        pub2.setStreet("123 Will Way");
+        pub2.setCity("Atlanta");
+        pub2.setState("GA");
+        pub2.setPostalCode("99999");
+        pub.setEmail("za@gmail.com");
+        pub2.setPhone("404-111-4444");
+        pub2 = publisherRepository.save(pub2);
+
+        Optional<Publisher> foundPublisher = publisherRepository.findById(pub.getId());
+        assertEquals(foundPublisher.get(), pub);
+
+    }
+
+    @Test
+    public void shouldRemovePublisher() {
+        Publisher pub = new Publisher();
+        pub.setName("Elza iNC");
+        pub.setStreet("123 Will Way");
+        pub.setCity("Atlanta");
+        pub.setState("GA");
+        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPhone("404-444-4444");
+        pub = publisherRepository.save(pub);
+
+        Optional<Publisher> pub1 = publisherRepository.findById(pub.getId());
+        assertEquals(pub1.get(), pub);
+
+        publisherRepository.deleteById(pub.getId());
+        pub1 = publisherRepository.findById(pub.getId());
+        assertFalse(pub1.isPresent());
+
+    }
+
+
+
+
+
 
 }
