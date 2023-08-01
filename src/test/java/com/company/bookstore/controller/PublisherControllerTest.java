@@ -1,7 +1,5 @@
 package com.company.bookstore.controller;
-//public class PublisherControllerTest {
-//
-//}
+
 
 import com.company.bookstore.model.Publisher;
 import com.company.bookstore.repository.PublisherRepository;
@@ -158,7 +156,7 @@ public class PublisherControllerTest {
         mockMvc.perform(delete("/publishers/1")).andDo(print()).andExpect(status().isNoContent());
 
     }
-    
+
 
 
 
