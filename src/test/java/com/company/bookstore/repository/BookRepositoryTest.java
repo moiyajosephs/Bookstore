@@ -1,6 +1,7 @@
 package com.company.bookstore.repository;
 
 import com.company.bookstore.model.Book;
+import com.company.bookstore.model.Publisher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,19 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class BookRepositoryTest {
 
     @Autowired
-    BookRepository repo;
+    BookRepository bookRepository;
+    
+    @Autowired
+    AuthorRepository authorRepository;
+    
+    @Autowired
+    PublisherRepository publisherRepository;
+    
     private Date date;
 
     @BeforeEach
     public void setUp() throws Exception {
-        repo.deleteAll();
+        bookRepository.deleteAll();
     }
 
     //Test Create
@@ -37,9 +45,9 @@ public class BookRepositoryTest {
         book.setPrice(12.99);
         book.setId(1);
 
-        book = repo.save(book);
+        book = bookRepository.save(book);
 
-        Optional<Book> book1 = repo.findById(book.getId());
+        Optional<Book> book1 = bookRepository.findById(book.getId());
         assertEquals(book1.get(), book);
 
 
@@ -57,9 +65,9 @@ public class BookRepositoryTest {
         book.setPrice(12.99);
         book.setId(1);
 
-        book = repo.save(book);
+        book = bookRepository.save(book);
 
-        Optional<Book> book1 = repo.findById(book.getId());
+        Optional<Book> book1 = bookRepository.findById(book.getId());
 
         assertEquals(book1.get(), book);
 
@@ -86,7 +94,7 @@ public class BookRepositoryTest {
         book2.setPrice(12.99);
         book2.setId(2);
 
-        List<Book> bookList = repo.findAll();
+        List<Book> bookList = bookRepository.findAll();
         assertEquals(2, bookList.size());
     }
 
@@ -101,13 +109,13 @@ public class BookRepositoryTest {
         book.setAuthor_id(2);
         book.setPrice(12.99);
         book.setId(1);
-        repo.save(book);
+        bookRepository.save(book);
 
         book.setTitle("Blue");
 
-        repo.save(book);
+        bookRepository.save(book);
 
-        Optional<Book> book1 = repo.findById(book.getId());
+        Optional<Book> book1 = bookRepository.findById(book.getId());
 
         assertEquals(book1.get(), book);
     }
@@ -124,11 +132,11 @@ public class BookRepositoryTest {
         book.setAuthor_id(2);
         book.setPrice(12.99);
         book.setId(1);
-        repo.save(book);
+        bookRepository.save(book);
 
-        repo.deleteById(book.getId());
+        bookRepository.deleteById(book.getId());
 
-        Optional<Book> book1 = repo.findById(book.getId());
+        Optional<Book> book1 = bookRepository.findById(book.getId());
         assertFalse(book1.isPresent());
     }
 
@@ -143,9 +151,9 @@ public class BookRepositoryTest {
         book.setAuthor_id(2);
         book.setPrice(12.99);
         book.setId(1);
-        repo.save(book);
+        bookRepository.save(book);
 
-        Optional<Book> book1 = repo.findById(book.getAuthor_id());
+        Optional<Book> book1 = bookRepository.findById(book.getAuthor_id());
 
         assertEquals(book1.get(), book);
 
