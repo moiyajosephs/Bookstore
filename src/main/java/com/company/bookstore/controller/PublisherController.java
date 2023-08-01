@@ -1,4 +1,55 @@
 package com.company.bookstore.controller;
 
+import com.company.bookstore.model.Publisher;
+import com.company.bookstore.repository.PublisherRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+//public class PublisherController {
+//}
+
+@RestController
 public class PublisherController {
+    @Autowired
+    PublisherRepository repo;
+
+    @RequestMapping(value = "/publishers", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<Publisher> getPublishers() {
+        return repo.findAll();
+    }
+
+    @RequestMapping(value = "/publishers/{id}", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public Publisher getPublisherById(@PathVariable int id) {
+
+        Optional<Publisher> returnVal = repo.findById(id);
+        if (returnVal.isPresent()) {
+            return returnVal.get();
+        } else {
+            return null;
+        }
+    }
+
+
+    @RequestMapping(value = "/publishers", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Publisher addPublisher(@RequestBody Publisher publisher) {
+        return repo.save(publisher);
+    }
+
+    @RequestMapping(value = "/publishers/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateCustomer(@RequestBody Publisher publisher) {
+        repo.save(publisher);
+    }
+
+    @DeleteMapping("/publishers/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomer(@PathVariable int id) {
+        repo.deleteById(id);
+    }
 }
