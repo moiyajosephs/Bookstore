@@ -27,7 +27,7 @@ public class Author implements Serializable {
     private String city;
     private String state;
     private int postalCode;
-    private String phoneNumber;
+    private String phone;
     private String email;
 
     public int getId() {
@@ -95,11 +95,11 @@ public class Author implements Serializable {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -133,8 +133,8 @@ public class Author implements Serializable {
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", postaCode=" + postalCode +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", postalCode=" + postalCode +
+                ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

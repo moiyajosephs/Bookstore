@@ -1,5 +1,6 @@
 package com.company.bookstore.repository;
 
+import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
 import com.company.bookstore.model.Publisher;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,9 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -26,29 +26,60 @@ public class BookRepositoryTest {
     @Autowired
     PublisherRepository publisherRepository;
     
-    private Date date;
+    private LocalDate date;
 
+    private Author author;
+
+    private Publisher pub;
+
+    private Set<Book> books = new HashSet<>();
     @BeforeEach
     public void setUp() throws Exception {
         bookRepository.deleteAll();
         authorRepository.deleteAll();
         publisherRepository.deleteAll();
+        date = LocalDate.of(2023,2,21);
+
+        pub = new Publisher();
+        pub.setName("Elza iNC");
+        pub.setStreet("123 Will Way");
+        pub.setCity("Atlanta");
+        pub.setState("GA");
+        pub.setPostalCode("99999");
+        pub.setEmail("elza@gmail.com");
+        pub.setPhone("404-444-4444");
+
+        author = new Author();
+        author.setFirstName("");
+        author.setLastName("");
+        author.setStreet("");
+        author.setCity("");
+        author.setPhoneNumber("elza@gmail.com");
+        author.setPostalCode(9999);
+        author.setEmail("eoem");
+        author.setBooks(books);
+        author.setState("");
+
+
+        authorRepository.save(author);
+        publisherRepository.save(pub);
+
     }
 
     //Test Create
     @Test
     public void addBook() {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(LocalDate.of(2023,2,21));
+        book.setAuthorId(author.getId());
         book.setPrice(12.99);
-        book.setId(1);
+        book.setPublisherId(pub.getId());
 
 
-        book = bookRepository.save(book);
+        bookRepository.save(book);
 
         Optional<Book> book1 = bookRepository.findById(book.getId());
         assertEquals(book1.get(), book);
@@ -59,16 +90,18 @@ public class BookRepositoryTest {
     //Test Read by ID
     @Test
     public void getBookById() {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(author.getId());
+        book.setPublisherId(pub.getId());
         book.setPrice(12.99);
-        book.setId(1);
 
-        book = bookRepository.save(book);
+
+
+        bookRepository.save(book);
 
         Optional<Book> book1 = bookRepository.findById(book.getId());
 
@@ -79,23 +112,25 @@ public class BookRepositoryTest {
     // Test Read All
     @Test
     public void getAllBooks() {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(author.getId());
+        book.setPublisherId(pub.getId());
         book.setPrice(12.99);
-        book.setId(1);
+        bookRepository.save(book);
 
-        date = new Date();
+
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Green");
-        book2.setPublish_date(date);
-        book2.setAuthor_id(2);
+        book2.setPublishDate(date);
+        book2.setAuthorId(author.getId());
+        book2.setPublisherId(pub.getId());
         book2.setPrice(12.99);
-        book2.setId(2);
+        bookRepository.save(book2);
 
         List<Book> bookList = bookRepository.findAll();
         assertEquals(2, bookList.size());
@@ -104,14 +139,15 @@ public class BookRepositoryTest {
     // Test Update
     @Test
     public void updateBook() {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(author.getId());
+        book.setPublisherId(pub.getId());
         book.setPrice(12.99);
-        book.setId(1);
+
         bookRepository.save(book);
 
         book.setTitle("Blue");
@@ -127,14 +163,15 @@ public class BookRepositoryTest {
     // Test Delete
     @Test
     public void deleteBook() {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(author.getId());
+        book.setPublisherId(pub.getId());
         book.setPrice(12.99);
-        book.setId(1);
+
         bookRepository.save(book);
 
         bookRepository.deleteById(book.getId());
@@ -146,19 +183,20 @@ public class BookRepositoryTest {
     // Test Get Book by Author ID
     @Test
     public void getBookByAuthorId() {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(author.getId());
+        book.setPublisherId(pub.getId());
         book.setPrice(12.99);
-        book.setId(1);
+
         bookRepository.save(book);
 
-        Optional<Book> book1 = bookRepository.findById(book.getAuthor_id());
+        List<Book> book1 = bookRepository.findBookByAuthorId(book.getAuthorId());
 
-        assertEquals(book1.get(), book);
+        assertEquals(1, book1.size());
 
     }
 

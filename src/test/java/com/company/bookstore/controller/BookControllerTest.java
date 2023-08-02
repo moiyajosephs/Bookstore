@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -37,18 +38,18 @@ class BookControllerTest {
     @MockBean
     private PublisherRepository publisherRepository;
 
-    private Date date;
+    private LocalDate date;
 
     // Testing POST /books/
     @Test
     public void shouldReturnBook() throws Exception {
 
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(2);
         book.setPrice(12.99);
 
         String inputJson = mapper.writeValueAsString(book);
@@ -56,8 +57,8 @@ class BookControllerTest {
         Book book2 = new Book();
         book2.setIsbn("1235");
         book2.setTitle("Green");
-        book2.setPublish_date(date);
-        book2.setAuthor_id(2);
+        book2.setPublishDate(date);
+        book2.setAuthorId(2);
         book2.setPrice(12.99);
         book2.setId(1);
 
@@ -71,12 +72,12 @@ class BookControllerTest {
     // Testing GET /books/{id}
     @Test
     public void shouldReturnBookbyId() throws Exception {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(2);
         book.setPrice(12.99);
         book.setId(1);
 
@@ -97,12 +98,12 @@ class BookControllerTest {
     // Testing PUT /books
     @Test
     public void shouldUpdateBook() throws Exception {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(2);
         book.setPrice(12.99);
         book.setId(1);
 
@@ -128,12 +129,12 @@ class BookControllerTest {
     // Testing GET /books/author/{id}
     @Test
     public void getReturnBookByAuthorId() throws Exception {
-        date = new Date();
+
         Book book = new Book();
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublish_date(date);
-        book.setAuthor_id(2);
+        book.setPublishDate(date);
+        book.setAuthorId(2);
         book.setPrice(12.99);
         book.setId(1);
 

@@ -3,6 +3,7 @@ package com.company.bookstore.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -18,13 +19,13 @@ public class Book {
 
     private String isbn;
 
-    private Date publish_date;
+    private LocalDate publishDate;
 
-    private int author_id;
+    private int authorId;
 
     private String title;
 
-    private int publisher_id;
+    private int publisherId;
 
     private double price;
 
@@ -44,20 +45,20 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Date getPublish_date() {
-        return publish_date;
+    public LocalDate getPublishDate() {
+        return publishDate;
     }
 
-    public void setPublish_date(Date publish_date) {
-        this.publish_date = publish_date;
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
     }
 
-    public int getAuthor_id() {
-        return author_id;
+    public int getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor_id(int author_id) {
-        this.author_id = author_id;
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     public String getTitle() {
@@ -68,12 +69,12 @@ public class Book {
         this.title = title;
     }
 
-    public int getPublisher_id() {
-        return publisher_id;
+    public int getPublisherId() {
+        return publisherId;
     }
 
-    public void setPublisher_id(int publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setPublisherId(int publisherId) {
+        this.publisherId = publisherId;
     }
 
     public double getPrice() {
@@ -89,23 +90,23 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id && isbn == book.isbn && author_id == book.author_id && publisher_id == book.publisher_id && Double.compare(book.price, price) == 0 && Objects.equals(publish_date, book.publish_date) && Objects.equals(title, book.title);
+        return id == book.id && authorId == book.authorId && publisherId == book.publisherId && Double.compare(book.price, price) == 0 && Objects.equals(isbn, book.isbn) && Objects.equals(publishDate, book.publishDate) && Objects.equals(title, book.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, isbn, publish_date, author_id, title, publisher_id, price);
+        return Objects.hash(id, isbn, publishDate, authorId, title, publisherId, price);
     }
 
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", isbn=" + isbn +
-                ", publish_date=" + publish_date +
-                ", author_id=" + author_id +
+                ", isbn='" + isbn + '\'' +
+                ", publishDate=" + publishDate +
+                ", authorId=" + authorId +
                 ", title='" + title + '\'' +
-                ", publisher_id=" + publisher_id +
+                ", publisherId=" + publisherId +
                 ", price=" + price +
                 '}';
     }
