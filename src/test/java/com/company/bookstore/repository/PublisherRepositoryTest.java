@@ -90,9 +90,10 @@ public class PublisherRepositoryTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99999");
+        pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
-        pub = publisherRepository.save(pub);
+        publisherRepository.save(pub);
 
 
         Publisher pub2 = new Publisher();
@@ -101,9 +102,9 @@ public class PublisherRepositoryTest {
         pub2.setCity("Atlanta");
         pub2.setState("GA");
         pub2.setPostalCode("99999");
-        pub.setEmail("za@gmail.com");
+        pub2.setEmail("za@gmail.com");
         pub2.setPhone("404-111-4444");
-        pub2 = publisherRepository.save(pub2);
+        publisherRepository.save(pub2);
 
         Optional<Publisher> foundPublisher = publisherRepository.findById(pub.getId());
         assertEquals(foundPublisher.get(), pub);
