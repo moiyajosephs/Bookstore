@@ -32,5 +32,10 @@ type Author {
 }
 
 type Query {
+    books: [Book]!
     findBookById(id: Int): Book
+}
+
+type Mutation {
+    addBook(id: Int isbn: String publish_date: String author_id: Int title: String publisher_id: Int price: Int): Book
 }
