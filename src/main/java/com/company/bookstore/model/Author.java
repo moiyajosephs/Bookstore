@@ -90,8 +90,8 @@ public class Author implements Serializable {
         return postalCode;
     }
 
-    public void setPostalCode(int postaCode) {
-        this.postalCode = postaCode;
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getPhoneNumber() {
