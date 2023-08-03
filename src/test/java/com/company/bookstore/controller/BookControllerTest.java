@@ -50,7 +50,7 @@ class BookControllerTest {
         book.setTitle("Green");
         book.setPublishDate(date);
         book.setAuthorId(2);
-        book.setPrice(12.99);
+        book.setPrice("12.99");
 
         String inputJson = mapper.writeValueAsString(book);
 
@@ -59,7 +59,7 @@ class BookControllerTest {
         book2.setTitle("Green");
         book2.setPublishDate(date);
         book2.setAuthorId(2);
-        book2.setPrice(12.99);
+        book2.setPrice("12.99");
         book2.setId(1);
 
         String outputJson = mapper.writeValueAsString(book2);
@@ -78,7 +78,7 @@ class BookControllerTest {
         book.setTitle("Green");
         book.setPublishDate(date);
         book.setAuthorId(2);
-        book.setPrice(12.99);
+        book.setPrice("12.99");
         book.setId(1);
 
         mockMvc.perform(get("/books/1"))
@@ -104,7 +104,7 @@ class BookControllerTest {
         book.setTitle("Green");
         book.setPublishDate(date);
         book.setAuthorId(2);
-        book.setPrice(12.99);
+        book.setPrice("12.99");
         book.setId(1);
 
         String inputJson = mapper.writeValueAsString(book);
@@ -135,7 +135,7 @@ class BookControllerTest {
         book.setTitle("Green");
         book.setPublishDate(date);
         book.setAuthorId(2);
-        book.setPrice(12.99);
+        book.setPrice("12.99");
         book.setId(1);
 
         mockMvc.perform(get("/books/author/2"))

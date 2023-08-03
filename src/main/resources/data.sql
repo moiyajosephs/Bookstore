@@ -1,4 +1,3 @@
-use book_store;
 
 INSERT INTO publisher
 (`publisher_id`, `name`, `street`, `city`, `state`, `postal_code`, `phone`, `email`)

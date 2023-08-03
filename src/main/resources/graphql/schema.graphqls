@@ -1,15 +1,15 @@
 type Book {
-    book_id: Int!
+    book_id: ID!
     isbn: String
     publish_date: String
-    author_id: Int
+    author: Author
     title: String
-    publisher_id: Int
-    price: Int
+    publisher: Publisher
+    price: Float
 }
 
 type Publisher {
-    publisher_id: Int
+    publisher_id: ID!
     name: String
     street: String
     city: String
@@ -20,7 +20,7 @@ type Publisher {
 }
 
 type Author {
-    author_id: Int,
+    author_id: ID!
     first_name: String
     last_name: String
     street: String
@@ -29,11 +29,12 @@ type Author {
     postal_code: String
     phone: String
     email: String
+    books: [Book]
 }
 
 type Query {
     books: [Book]!
-    findBookById(id: Int): Book
+    BookById(id: ID!): Book
 }
 
 type Mutation {
