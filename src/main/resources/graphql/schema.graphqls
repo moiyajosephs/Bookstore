@@ -1,40 +1,41 @@
 type Book {
-    book_id: ID!
-    isbn: String
-    publish_date: String
+    id: ID!
+    isbn: String!
+    publishDate: String!
     author: Author
-    title: String
+    title: String!
     publisher: Publisher
-    price: Float
+    price: Float!
 }
 
 type Publisher {
-    publisher_id: ID!
-    name: String
-    street: String
-    city: String
-    state: String
-    postal_code: String
-    phone: String
-    email: String
+    id: ID!
+    name: String!
+    street: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    phone: String!
+    email: String!
+    books: [Book]
 }
 
 type Author {
-    author_id: ID!
-    first_name: String
-    last_name: String
-    street: String
-    city: String
-    state: String
-    postal_code: String
-    phone: String
-    email: String
+    id: ID!
+    firstName: String!
+    lastName: String!
+    street: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    phone: String!
+    email: String!
     books: [Book]
 }
 
 type Query {
-    books: [Book]!
-    BookById(id: ID!): Book
+    books: [Book]
+    bookById(id: ID!): Book
 }
 
 type Mutation {
