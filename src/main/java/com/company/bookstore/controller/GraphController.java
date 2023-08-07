@@ -35,7 +35,7 @@ public class GraphController {
     // Get a book by id.
     //Including the author and publisher of the book.
     @QueryMapping
-    public Book findBookById(@Argument int id){
+    public Book bookById(@Argument int id){
         Optional<Book> returnBook = bookRepository.findById(id);
         if (returnBook.isPresent()){
             return returnBook.get();
@@ -76,6 +76,10 @@ public class GraphController {
         }
     }
     
+
+
+
+
 
 
 
