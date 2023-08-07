@@ -65,6 +65,18 @@ public class GraphController {
         }
     }
 
+    //get publisher by id
+    @QueryMapping
+    public Publisher getPublisherbyId(@Argument int id) {
+        Optional<Publisher> returnval = publisherRepository.findById(id);
+        if (returnval.isPresent()) {
+            return returnval.get();
+        } else {
+            return null;
+        }
+    }
+    
+
 
 
 
