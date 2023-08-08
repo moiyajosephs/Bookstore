@@ -75,7 +75,17 @@ public class GraphController {
             return null;
         }
     }
-    
+
+    @QueryMapping
+    public Author getAuthorById(@Argument int id) {
+        Optional<Author> author = authorRepository.findById(id);
+        if (author.isPresent()) {
+            return author.get();
+        }else {
+            return null;
+        }
+    }
+
 
 
 
