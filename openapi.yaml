@@ -6,25 +6,20 @@ servers:
   - url: http://localhost:8080
     description: Generated server url
 paths:
-  /publishers/{id}:
+  /publishers:
     get:
       tags:
         - publisher-controller
-      operationId: getPublisherById
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int32
+      operationId: getPublishers
       responses:
         '200':
           description: OK
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/Publisher'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Publisher'
     put:
       tags:
         - publisher-controller
@@ -38,20 +33,23 @@ paths:
       responses:
         '204':
           description: No Content
-    delete:
+    post:
       tags:
         - publisher-controller
-      operationId: deletePublisher
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int32
+      operationId: addPublisher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Publisher'
+        required: true
       responses:
-        '204':
-          description: No Content
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Publisher'
   /books:
     get:
       tags:
@@ -144,37 +142,39 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Author'
-  /publishers:
+  /publishers/{id}:
     get:
       tags:
         - publisher-controller
-      operationId: getPublishers
+      operationId: getPublisherById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
       responses:
         '200':
           description: OK
           content:
             '*/*':
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Publisher'
-    post:
+                $ref: '#/components/schemas/Publisher'
+    delete:
       tags:
         - publisher-controller
-      operationId: addPublisher
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Publisher'
-        required: true
+      operationId: deletePublisher
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
       responses:
-        '201':
-          description: Created
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Publisher'
+        '204':
+          description: No Content
   /books/{id}:
     get:
       tags:
@@ -327,10 +327,10 @@ components:
           format: int32
         email:
           type: string
-        phoneNumber:
-          type: string
         books:
           uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/Book'
+        phoneNumber:
+          type: string
