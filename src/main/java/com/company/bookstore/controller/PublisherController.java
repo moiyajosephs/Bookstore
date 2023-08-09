@@ -1,5 +1,6 @@
 package com.company.bookstore.controller;
 
+import com.company.bookstore.model.Book;
 import com.company.bookstore.model.Publisher;
 import com.company.bookstore.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,6 @@ public class PublisherController {
     @GetMapping("/publishers/{id}")
     @ResponseStatus(value = HttpStatus.OK)
     public Publisher getPublisherById(@PathVariable int id) {
-
         Optional<Publisher> returnVal = repo.findById(id);
         if (returnVal.isPresent()) {
             return returnVal.get();

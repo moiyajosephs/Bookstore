@@ -122,7 +122,8 @@ public class PublisherControllerTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostalCode("99899");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99899");
+        pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
 
 
@@ -135,8 +136,11 @@ public class PublisherControllerTest {
         pub_o.setStreet("123 Ill Way");
         pub_o.setCity("Atlanta");
         pub_o.setState("GA");
-        pub_o.setPostalCode("99999");pub.setEmail("lza@gmail.com");
+        pub_o.setPostalCode("99999");
+        pub_o.setEmail("lza@gmail.com");
         pub_o.setPhone("404-424-4444");
+        pub_o.setId(1);
+
 
 
         String outputJson = mapper.writeValueAsString(pub_o);
