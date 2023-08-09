@@ -44,6 +44,28 @@ public class GraphController {
         }
     }
 
+    //get publisher by id
+    @QueryMapping
+    public Publisher getPublisherbyId(@Argument int id) {
+        Optional<Publisher> returnPublisher = publisherRepository.findById(id);
+        if (returnPublisher.isPresent()) {
+            return returnPublisher.get();
+        } else {
+            return null;
+        }
+    }
+
+    @QueryMapping
+    public Author getAuthorById(@Argument int id) {
+        Optional<Author> returnAuthor = authorRepository.findById(id);
+        if (returnAuthor.isPresent()) {
+            return returnAuthor.get();
+        }else {
+            return null;
+        }
+    }
+
+
     @SchemaMapping
     public Author author (Book book) {
         Optional<Author> returnVal = authorRepository.findById(book.getAuthorId());
@@ -65,26 +87,7 @@ public class GraphController {
         }
     }
 
-    //get publisher by id
-    @QueryMapping
-    public Publisher getPublisherbyId(@Argument int id) {
-        Optional<Publisher> returnval = publisherRepository.findById(id);
-        if (returnval.isPresent()) {
-            return returnval.get();
-        } else {
-            return null;
-        }
-    }
 
-    @QueryMapping
-    public Author getAuthorById(@Argument int id) {
-        Optional<Author> author = authorRepository.findById(id);
-        if (author.isPresent()) {
-            return author.get();
-        }else {
-            return null;
-        }
-    }
 
 
 

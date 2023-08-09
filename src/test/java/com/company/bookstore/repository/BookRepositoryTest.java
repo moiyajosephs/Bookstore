@@ -7,10 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -20,27 +22,28 @@ public class BookRepositoryTest {
 
     @Autowired
     BookRepository bookRepository;
-    
+
     @Autowired
     AuthorRepository authorRepository;
 
 
     @Autowired
     PublisherRepository publisherRepository;
-    
+
     private LocalDate date;
 
     private Author author;
 
     private Publisher pub;
 
-    private Set<Book> books = new HashSet<>();
+    private final Set<Book> books = new HashSet<>();
+
     @BeforeEach
     public void setUp() throws Exception {
         bookRepository.deleteAll();
         authorRepository.deleteAll();
         publisherRepository.deleteAll();
-        date = LocalDate.of(2023,2,21);
+        date = LocalDate.of(2023, 2, 21);
 
         pub = new Publisher();
         pub.setName("Elza iNC");
@@ -71,11 +74,11 @@ public class BookRepositoryTest {
     //Test Create
     @Test
     public void addBook() {
-
         Book book = new Book();
+
         book.setIsbn("1235");
         book.setTitle("Green");
-        book.setPublishDate(LocalDate.of(2023,2,21));
+        book.setPublishDate(LocalDate.of(2023, 2, 21));
         book.setAuthorId(author.getId());
         book.setPrice(12.99);
         book.setPublisherId(pub.getId());
@@ -100,7 +103,6 @@ public class BookRepositoryTest {
         book.setAuthorId(author.getId());
         book.setPublisherId(pub.getId());
         book.setPrice(12.99);
-
 
 
         bookRepository.save(book);

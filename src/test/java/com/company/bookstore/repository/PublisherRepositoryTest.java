@@ -1,23 +1,16 @@
 package com.company.bookstore.repository;
 
 import com.company.bookstore.model.Publisher;
-import com.company.bookstore.model.Book;
-import com.company.bookstore.model.Author;
-import com.company.bookstore.repository.AuthorRepository;
-import com.company.bookstore.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+
 @SpringBootTest
 public class PublisherRepositoryTest {
     @Autowired
@@ -43,7 +36,8 @@ public class PublisherRepositoryTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99999");
+        pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
 
 
@@ -62,7 +56,8 @@ public class PublisherRepositoryTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99999");
+        pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
 
         pub = publisherRepository.save(pub);
@@ -71,7 +66,8 @@ public class PublisherRepositoryTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99999");
+        pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
 
         pub = publisherRepository.save(pub);
@@ -118,7 +114,8 @@ public class PublisherRepositoryTest {
         pub.setStreet("123 Will Way");
         pub.setCity("Atlanta");
         pub.setState("GA");
-        pub.setPostalCode("99999");pub.setEmail("elza@gmail.com");
+        pub.setPostalCode("99999");
+        pub.setEmail("elza@gmail.com");
         pub.setPhone("404-444-4444");
         pub = publisherRepository.save(pub);
 
@@ -130,10 +127,6 @@ public class PublisherRepositoryTest {
         assertFalse(pub1.isPresent());
 
     }
-
-
-
-
 
 
 }
