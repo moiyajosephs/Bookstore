@@ -147,7 +147,7 @@ public class PublisherControllerTest {
         String outputJson = mapper.writeValueAsString(pub_o);
 
         mockMvc.perform(
-                        put("/publishers/1")                            // Perform the PUT request
+                        put("/publishers")                            // Perform the PUT request
                                 .content(outputJson)                       // Set the request body
                                 .contentType(MediaType.APPLICATION_JSON)  // Tell the server it's in JSON format
                 )
