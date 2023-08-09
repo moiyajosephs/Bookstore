@@ -1,5 +1,6 @@
 package com.company.bookstore.controller;
 
+import com.company.bookstore.model.Author;
 import com.company.bookstore.model.Book;
 import com.company.bookstore.model.Publisher;
 import com.company.bookstore.repository.PublisherRepository;
@@ -39,7 +40,7 @@ public class PublisherController {
         return repo.save(publisher);
     }
 
-    @PutMapping("/publishers/{id}")
+    @PutMapping("/publishers")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updatePublisher(@RequestBody Publisher publisher) {
         repo.save(publisher);

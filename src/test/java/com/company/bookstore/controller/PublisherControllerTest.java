@@ -117,6 +117,7 @@ public class PublisherControllerTest {
 
     @Test
     public void shouldUpdateExistingCustomer() throws Exception {
+
         Publisher pub = new Publisher();
         pub.setName("Elza iNC");
         pub.setStreet("123 Will Way");
@@ -147,7 +148,7 @@ public class PublisherControllerTest {
 
         mockMvc.perform(
                         put("/publishers/1")                            // Perform the PUT request
-                                .content(inputJson)                       // Set the request body
+                                .content(outputJson)                       // Set the request body
                                 .contentType(MediaType.APPLICATION_JSON)  // Tell the server it's in JSON format
                 )
                 .andDo(print())                                // Print results to console
