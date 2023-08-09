@@ -1,41 +1,43 @@
 type Book {
     id: ID!
-    isbn: String!
-    publishDate: String!
+    isbn: String
+    publishDate: String
     author: Author
-    title: String!
+    title: String
     publisher: Publisher
-    price: Float!
+    price: Float
 }
 
 type Publisher {
     id: ID!
-    name: String!
-    street: String!
-    city: String!
-    state: String!
-    postalCode: String!
-    phone: String!
-    email: String!
+    name: String
+    street: String
+    city: String
+    state: String
+    postalCode: String
+    phone: String
+    email: String
     books: [Book]
 }
 
 type Author {
     id: ID!
-    firstName: String!
-    lastName: String!
-    street: String!
-    city: String!
-    state: String!
-    postalCode: String!
-    phone: String!
-    email: String!
+    firstName: String
+    lastName: String
+    street: String
+    city: String
+    state: String
+    postalCode: String
+    phone: String
+    email: String
     books: [Book]
 }
 
 type Query {
     books: [Book]
     bookById(id: ID!): Book
+    getAuthorById(id: ID!): Author
+    getPublisherById(id: ID!): Publisher
 }
 
 type Mutation {

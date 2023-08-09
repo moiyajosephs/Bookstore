@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(AuthorController.class)
 public class AuthorControllerTest {
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
     private List<Book> bookList;
@@ -67,17 +67,20 @@ public class AuthorControllerTest {
                         .content(inputJson).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print()).andExpect(status().isCreated());
     }
+
     @Test
     public void shouldReturnAuthorbyId() throws Exception {
         mockMvc.perform(get("/authors/1"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
     @Test
     public void shouldReturnAllAuthors() throws Exception {
 
         mockMvc.perform(get("/authors")).andDo(print()).andExpect(status().isOk());
     }
+
     @Test
     public void shouldUpdateAuthor() throws Exception {
 
@@ -102,6 +105,7 @@ public class AuthorControllerTest {
                 .andDo(print())
                 .andExpect(status().isNoContent());
     }
+
     @Test
     public void shouldDeleteAuthorById() throws Exception {
         mockMvc.perform(delete("/authors/1")).andDo(print()).andExpect(status().isNoContent());

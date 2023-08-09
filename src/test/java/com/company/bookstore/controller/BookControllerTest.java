@@ -1,7 +1,6 @@
 package com.company.bookstore.controller;
 
 import com.company.bookstore.model.Book;
-import com.company.bookstore.model.Publisher;
 import com.company.bookstore.repository.AuthorRepository;
 import com.company.bookstore.repository.BookRepository;
 import com.company.bookstore.repository.PublisherRepository;
@@ -14,7 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -24,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(BookController.class)
 class BookControllerTest {
 
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
     @Autowired
     private MockMvc mockMvc;
     private List<Book> bookList;

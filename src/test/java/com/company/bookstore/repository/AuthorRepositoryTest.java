@@ -1,12 +1,10 @@
 package com.company.bookstore.repository;
 
 import com.company.bookstore.model.Author;
-import com.company.bookstore.model.Book;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Date;
 import java.util.List;
@@ -57,6 +55,7 @@ public class AuthorRepositoryTest {
 
         authorRepository.save(author2);
     }
+
     @Test
     public void addAuthor() {
 
@@ -64,12 +63,14 @@ public class AuthorRepositoryTest {
         Optional author1 = authorRepository.findById(author.getId());
         assertEquals(author1.get(), author);
     }
+
     @Test
     public void getAuthorById() {
 
         Optional author1 = authorRepository.findById(author.getId());
         assertEquals(author1.get(), author);
     }
+
     @Test
     public void getAllAuthors() {
         List<Author> authors = authorRepository.findAll();
@@ -84,6 +85,7 @@ public class AuthorRepositoryTest {
         Optional author1 = authorRepository.findById(author.getId());
         assertEquals(author1.get(), author);
     }
+
     @Test
     public void deleteAuthor() {
         authorRepository.deleteById(author.getId());

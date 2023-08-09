@@ -32,7 +32,7 @@ public class PublisherControllerTest {
 
     private ObjectMapper mapper = new ObjectMapper();
     // A list of customers for testing purposes
-
+    private List<Publisher> publisherList;
     @BeforeEach
     public void setUp() throws Exception {
         Publisher pub = new Publisher();
@@ -62,7 +62,7 @@ public class PublisherControllerTest {
     }
 
 
-    private List<Publisher> publisherList;
+
     @Test
     public void shouldReturnAllPublishersInCollection() throws Exception {
         String outputJson = mapper.writeValueAsString(publisherList);

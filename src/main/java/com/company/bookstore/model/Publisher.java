@@ -20,6 +20,8 @@ public class Publisher implements Serializable {
     private String street;
     private String city;
     private String state;
+
+    @Column(name = "postal_code")
     private String postalCode;
     private String phone;
     private String email;
